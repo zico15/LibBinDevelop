@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -187,7 +188,8 @@ public class SystemLib {
                copyFile(file, new File(new File(System.getProperty("user.dir")), "lib"));
                }
            }
-//            Method method = pluginClass.getDeclaredMethod("instance");        
+         Method method = pluginClass.getDeclaredMethod("instance",Integer.class,String.class);    
+        method.invoke("instance", "oi");
 //   
 //            lib =  (Lib) method.invoke(libObj);
         } catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
